@@ -1,0 +1,13 @@
+[user]
+	email = Leon.Chang@mitrastar.com.tw
+	name = Leon.Chang
+[core]
+	pager = cat
+	editor = vim
+	whitespace = -blank-at-eol,-space-before-tab,-blank-at-eof
+[alias]
+	co = checkout
+	st = status
+	ci = commit
+	br = branch
+	lg = log --oneline --graph --branches --decorate
