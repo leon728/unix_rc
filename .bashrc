@@ -18,8 +18,12 @@ source ~/.colorrc
 #PROMPT_COMMAND="PS1='${On_Blue}\t ${Yellow}\w\n${White}\$${Color_Off} '; "
 
 ## >> git prompt
-export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWCOLORHINTS=1
+export GIT_PS1_SHOWDIRTYSTATE=1
+#export GIT_PS1_SHOWSTASHSTATE=1
+#export GIT_PS1_SHOWUNTRACKEDFILES=1
+#export GIT_PS1_DESCRIBE_STYLE="branch"
+#export GIT_PS1_SHOWUPSTREAM="auto git"
 PROMPT_COMMAND='__git_ps1 "${On_Blue}\t${Color_Off}" " ${Yellow}\w\n${White}\$${Color_Off} "'
 
 ## >> highlight warning and error when make
