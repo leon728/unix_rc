@@ -1,0 +1,12 @@
+export PATH=/opt/broadcom/xlp_sdk_2.3/toolchains_bin/mipscross/elf/bin:/opt/broadcom/xlp_sdk_2.3/toolchains_bin/mipscross/linux/bin:$PATH
+export AR=mips64-nlm-linux-ar
+export AS=mips64-nlm-linux-as
+export CC=mips64-nlm-linux-gcc
+export GCC=mips64-nlm-linux-gcc
+export CXX=mips64-nlm-linux-g++
+export NM=mips64-nlm-linux-nm
+export RANLIB=mips64-nlm-linux-ranlib
+export OBJCOPY=mips64-nlm-linux-objcopy
+export OBJDUMP=mips64-nlm-linux-objdump
+export STRIP=mips64-nlm-linux-strip
+export SIZE=mips64-nlm-linux-size

@@ -1,0 +1,76 @@
+include $(BUILD_DIR)/buildroot/utils.mk
+
+OBJ_DIR := ../output/cmapi
+
+#SRC := $(CG_SRC) $(wildcard *.c)
+# 'sort' will sort and remove duplicate words, we use it here merely to remove duplicate words
+#SRC := $(sort $(CG_SRC) $(wildcard *.c)) ../svc/bytebuf.c
+#OBJ := $(SRC:%.c=$(OBJ_DIR)/%.o)
+
+
+####################################
+# flags
+#-----------------------------------
+LDFLAGS := \
+	-L$(LIB_DIR) \
+
+LDLIBS := \
+	-lcmdb \
+
+INCFLAGS := \
+	-I../svc \
+	-I$(INC_DIR) \
+
+CFLAGS = -Wall -MMD -MP -c -g
+
+
+####################################
+# targets
+#-----------------------------------
+all: $(OBJ_DIR)/libcmapi_loopguard.so $(OBJ_DIR)/libcmapi_leon.so
+
+
+####################################
+# libcmapi_loopguard.so
+#-----------------------------------
+SRC_lg := cmapi_loopguard.c cmapi_loopguard_callback.c ../svc/bytebuf.c
+OBJ_lg := $(SRC_lg:%.c=$(OBJ_DIR)/%.o)
+
+# link
+$(OBJ_DIR)/libcmapi_loopguard.so: $(OBJ_lg)
+	@echo -e "$(COL_CYAN) == $@ $(COL_NONE)"
+	$(CC) -o $@ $(LDFLAGS) $(LDLIBS) $(OBJ_lg) -Wl,-z,defs -shared
+
+#compile
+$(OBJ_lg): $(OBJ_DIR)/%.o: %.c
+	@echo -e "$(COL_BLUE) >> $< $(COL_NONE)"
+	$(CC) -o $@ $(CFLAGS) $(INCFLAGS) $< -fPIC
+
+# auto create output directory
+$(foreach file,$(OBJ_lg),$(eval $(call depend_on_dir,$(file))))
+
+# auto dependency
+-include $(OBJ_lg:.o=.d)
+
+
+####################################
+# libcmapi_leon.so
+#-----------------------------------
+SRC_leon := cmapi_leon.c
+OBJ_leon := $(SRC_leon:%.c=$(OBJ_DIR)/%.o)
+
+# link
+$(OBJ_DIR)/libcmapi_leon.so: $(OBJ_leon)
+	@echo -e "$(COL_CYAN) == $@ $(COL_NONE)"
+	$(CC) -o $@ $(LDFLAGS) $(LDLIBS) $(OBJ_leon) -Wl,-z,defs -shared
+
+#compile
+$(OBJ_leon): $(OBJ_DIR)/%.o: %.c
+	@echo -e "$(COL_BLUE) >> $< $(COL_NONE)"
+	$(CC) -o $@ $(CFLAGS) $(INCFLAGS) $< -fPIC
+
+# auto create output directory
+$(foreach file,$(OBJ_leon),$(eval $(call depend_on_dir,$(file))))
+
+# auto dependency
+-include $(OBJ_leon:.o=.d)

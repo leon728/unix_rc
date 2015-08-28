@@ -1,0 +1,6 @@
+M       components.mk
+M       private/product/loopguard/cli/cliLoopguard.c
+M       private/product/loopguard/svc/loopguard_oam.c
+?       private/product/pppoeia
+
+Performing status on external item at 'private/include/lcComm':

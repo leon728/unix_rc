@@ -1,0 +1,23 @@
+OBJDIR := objdir
+SRCS := b.c f.c
+
+O1 := $(SRCS:.c=.o)
+$(warning $(O1))
+
+O2 := $(SRCS:%.c=$(OBJDIR)/%.o)
+$(warning $(O2))
+
+#OBJS := $(addprefix $(OBJDIR)/,b.o f.o)
+OBJS := $(patsubst %.c,$(OBJDIR)/%.o,$(SRCS))
+$(warning $(OBJS))
+
+all: $(OBJS)
+
+$(OBJDIR)/%.o : %.c
+	gcc -c -o $@ $<
+
+$(OBJS): | $(OBJDIR)
+
+$(OBJDIR):
+	@echo ++++++
+	mkdir $(OBJDIR)

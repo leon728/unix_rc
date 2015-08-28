@@ -1,0 +1,18 @@
+#export PATH=/opt/broadcom/iproc3.4.3/usr/bin:$PATH
+#export TOOLS=/opt/broadcom/iproc3.4.3/usr/bin
+
+export LD_LIBRARY_PATH=/opt/broadcom/iproc3.4.3/usr/lib
+export CC=/opt/broadcom/iproc3.4.3/usr/bin/arm-linux-gcc
+export AR=/opt/broadcom/iproc3.4.3/usr/bin/arm-linux-ar
+export AS=/opt/broadcom/iproc3.4.3/usr/bin/arm-linux-as
+export LD=/opt/broadcom/iproc3.4.3/usr/bin/arm-linux-ld
+export GCC=/opt/broadcom/iproc3.4.3/usr/bin/arm-linux-gcc
+export CXX=/opt/broadcom/iproc3.4.3/usr/bin/arm-linux-g++
+export NM=/opt/broadcom/iproc3.4.3/usr/bin/arm-linux-nm
+export RANLIB=/opt/broadcom/iproc3.4.3/usr/bin/arm-linux-ranlib
+export OBJCOPY=/opt/broadcom/iproc3.4.3/usr/bin/arm-linux-objcopy
+export OBJDUMP=/opt/broadcom/iproc3.4.3/usr/bin/arm-linux-objdump
+export STRIP=/opt/broadcom/iproc3.4.3/usr/bin/arm-linux-strip
+export SIZE=/opt/broadcom/iproc3.4.3/usr/bin/arm-linux-size
+export GDB=/opt/broadcom/iproc3.4.3/usr/bin/arm-linux-gdb
+
