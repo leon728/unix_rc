@@ -1,22 +1,30 @@
+syntax on
+set nocompatible
+"colorscheme elflord
+colorscheme torte
+
+"set backspace=indent,eol,start
+set bs=2
 set ignorecase
 "set smartcase
 set hlsearch
+"set incsearch  " incremental search
+"set cursorline
+"set number		" display line number
+set ruler		" show row,col
+set laststatus=2
 
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 "set expandtab
+set smarttab
+"set autoindent
 
 "set encoding=big5
 "set termencoding=utf8
 "set fileencoding=utf8
-"set fileencodings=utf8
-
-set smarttab
-"set autoindent
-
-" display line number
-"set number
+"set fileencodings=utf8,cp950
 
 " set mouse control
 set mouse=

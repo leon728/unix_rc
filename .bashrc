@@ -1,3 +1,10 @@
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+export LANGUAGE="en_US:en"
+
+#source ~/.git-completion.bash
+#source ~/.git-prompt.sh
+
 export EDITOR=vim
 export PAGER=less
 export LESS=-iR
@@ -15,7 +22,7 @@ alias t='telnet'
 #export PS1='\[\e[0;90m\]\t \[\e[0;36m\]\u \[\e[0;33m\]\w\n\[\e[0;37m\]\$\[\e[0m\] '
 
 source ~/.colorrc
-#PROMPT_COMMAND="PS1='${On_Blue}\t ${Yellow}\w\n${White}\$${Color_Off} '; "
+PROMPT_COMMAND="PS1='${On_Blue}\t${Color_Off} ${Yellow}\w\n${White}\$${Color_Off} '; "
 
 ## >> git prompt
 export GIT_PS1_SHOWCOLORHINTS=1
@@ -24,7 +31,7 @@ export GIT_PS1_SHOWDIRTYSTATE=1
 #export GIT_PS1_SHOWUNTRACKEDFILES=1
 #export GIT_PS1_DESCRIBE_STYLE="branch"
 #export GIT_PS1_SHOWUPSTREAM="auto git"
-PROMPT_COMMAND='__git_ps1 "${On_Blue}\t${Color_Off}" " ${Yellow}\w\n${White}\$${Color_Off} "'
+#PROMPT_COMMAND='__git_ps1 "${On_Blue}\t${Color_Off}" " ${Yellow}\w\n${White}\$${Color_Off} "'
 
 ## >> highlight warning and error when make
 make() {
