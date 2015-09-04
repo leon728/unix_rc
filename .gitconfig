@@ -11,3 +11,5 @@
 	ci = commit
 	br = branch
 	lg = log --oneline --graph --branches --decorate
+[push]
+	default = simple
