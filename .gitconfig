@@ -13,3 +13,5 @@
 	lg = log --oneline --graph --branches --decorate
 [push]
 	default = simple
+[color]
+	ui = true
