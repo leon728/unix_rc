@@ -11,9 +11,12 @@ export LESS=-iR
 
 export HISTCONTROL=ignoredups
 
-alias ll='ls -lF'
+alias ls='ls --color=auto'
+alias grep='grep --colour=auto'
+
+alias ll='ls -AlF'
 alias lg='ls -lF --group-directories-first'
-alias la='ls -AlF'
+alias la='ls -lF'
 alias g='grep -i'
 alias ns='netstat'
 alias t='telnet'
