@@ -20,6 +20,7 @@ alias la='ls -lF'
 alias g='grep -i'
 alias ns='netstat'
 alias t='telnet'
+alias tig='tig --all'
 
 #export PS1='\[\e[1;33m\]\u\[\e[1;34m\]@\[\e[1;35m\]\H\[\e[0m\] \[\e[1;31m\]!\!\[\e[0m\] \[\e[1;32m\]\t\[\e[0m\] \[\e[1;37m\]\w\[\e[0m\]\n\[\e[1;37m\]\$\[\e[0m\] '
 #export PS1='\[\e[0;90m\]\t \[\e[0;36m\]\u \[\e[0;33m\]\w\n\[\e[0;37m\]\$\[\e[0m\] '
