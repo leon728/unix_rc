@@ -11,6 +11,8 @@ export LESS=-iR
 #export DISPLAY=172.23.44.5:0.0
 
 export HISTCONTROL=ignoredups
+export HISTSIZE=500
+export HISTFILESIZE=5000
 
 alias ls='ls --color=auto'
 alias grep='grep --colour=auto'
