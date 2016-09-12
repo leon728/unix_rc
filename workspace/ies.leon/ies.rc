@@ -11,3 +11,11 @@ export OBJCOPY=mips64-nlm-linux-objcopy
 export OBJDUMP=mips64-nlm-linux-objdump
 export STRIP=mips64-nlm-linux-strip
 export SIZE=mips64-nlm-linux-size
+
+export DIR_ies=/home/leon/workspace/ies
+export TARGET_INC_DIR=$DIR_ies/product/IES5206/target/include
+export TARGET_LIB_DIR=$DIR_ies/product/IES5206/target/lib
+export ROOTFS_DIR=$DIR_ies/sdk/sdk-xlp-2.3/linux/usr/rootfs.xlp
+export PRI_DIR=$DIR_ies/private
+export PRODUCT_BUILD_DIR=$DIR_ies/product/IES5206
+export NETSNMP_DL_DIR=$DIR_ies/sdk/sdk-xlp-2.3/linux/usr/rootfs.xlp/usr/local/lib/snmp/dlmod
