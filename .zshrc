@@ -51,7 +51,6 @@ ZSH_THEME="leon"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git autojump colored-man-pages colorize copydir command-not-found history sublime zsh-syntax-highlighting)
-
 #plugins+=(zsh-completions)
 #autoload -U compinit && compinit
 
@@ -87,11 +86,25 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+#### set key binding ####
 autoload zkbd
-#### ${ZDOTDIR:-$HOME}/.zkbd/$TERM-$VENDOR-$OSTYPE
-#### ~/.zkbd/$TERM-${DISPLAY:-$VENDOR-$OSTYPE}
-#[[ ! -f ~/.zkbd/$TERM ]] && zkbd
- [[   -f ~/.zkbd/$TERM ]] && source ~/.zkbd/$TERM
+#file_kbd=~/.zkbd/$TERM-${${DISPLAY:t}:-$VENDOR-$OSTYPE}
+file_kbd=~/.zkbd/$TERM
+#[[ ! -f ${file_kbd} ]] && zkbd
+ [[   -f ${file_kbd} ]] && source ${file_kbd}
+
+typeset -g -A key
+key[Backspace]='^H'
+key[Insert]='^[[2~'
+key[Home]='^[[1~'
+key[PageUp]='^[[5~'
+key[Delete]='^[[3~'
+key[End]='^[[4~'
+key[PageDown]='^[[6~'
+key[Up]='^[[A'
+key[Left]='^[[D'
+key[Down]='^[[B'
+key[Right]='^[[C'
 
 [[ -n ${key[Backspace]} ]] && bindkey "${key[Backspace]}" backward-delete-char
 [[ -n ${key[Insert]} ]] && bindkey "${key[Insert]}" overwrite-mode
@@ -104,6 +117,7 @@ autoload zkbd
 [[ -n ${key[Left]} ]] && bindkey "${key[Left]}" backward-char
 [[ -n ${key[Down]} ]] && bindkey "${key[Down]}" down-line-or-search
 [[ -n ${key[Right]} ]] && bindkey "${key[Right]}" forward-char
+########
 
 setopt shwordsplit
 

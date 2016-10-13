@@ -47,7 +47,7 @@ PROMPT_COMMAND="PS1='${White}\t ${Yellow}\w\n${IWhite}\$${Color_Off} '; "
 export GIT_PS1_SHOWCOLORHINTS=1
 export GIT_PS1_SHOWDIRTYSTATE=1     # disable this if used in cygwin (bad performance)
 export GIT_PS1_SHOWSTASHSTATE=1     # disable this if used in cygwin (bad performance)
-#export GIT_PS1_SHOWUNTRACKEDFILES=1 # disable this if used in cygwin (bad performance)
+export GIT_PS1_SHOWUNTRACKEDFILES=1 # disable this if used in cygwin (bad performance)
 #export GIT_PS1_DESCRIBE_STYLE="branch"
 #export GIT_PS1_SHOWUPSTREAM="auto git"
 #PROMPT_COMMAND='__git_ps1 "${IBlack}\t ${Cyan}\u@\h${Color_Off}" " ${Yellow}\w ${White}\$${Color_Off} "'

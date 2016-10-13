@@ -32,6 +32,7 @@ $error_highlight =  $col_brighten;
 
 # my settings
 #
-$col_warning =      $col_yellow . $col_background;
+#$col_warning =      $col_yellow . $col_background;
+$col_warning =      $col_yellow;
 $col_error =        $col_red . $col_background;
 $error_highlight =  "";
