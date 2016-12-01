@@ -46,10 +46,12 @@ function ssh_connection() {
   fi
 }
 
-local ret_status="%(?:%{$fg[green]%}:%{$fg[red]%})%?%{$reset_color%}"
-#PROMPT=$'\n%{$fg[white]%}%*%{$reset_color%} %{$fg[green]%}%n@%m%{$reset_color%}$(my_git_prompt) %{$fg[yellow]%}%~%{$reset_color%}\n[${ret_status}] %# '
-#PROMPT=$'\n%{$fg[white]%}%*%{$reset_color%} %{$fg[green]%}%n@%m%{$reset_color%}$(my_git_prompt) [${ret_status}] %# %{$fg[yellow]%}%~%{$reset_color%}\n'
-PROMPT=$'%{$fg[white]%}%*%{$reset_color%} %{$fg[green]%}%n@%m%{$reset_color%}$(my_git_prompt) %{$fg[yellow]%}%~%{$reset_color%}\n%# '
+#local ret_status="%(?:%{$fg[green]%}:%{$fg[red]%})[%?]"
+#PROMPT=$'%{$fg[white]%}%* %{$fg[green]%}%n@%m$(my_git_prompt) %{$fg[yellow]%}%~\n${ret_status} %{$fg[white]%}%# %{$reset_color%}'
+#PROMPT=$'%{$fg[white]%}%* %{$fg[green]%}%n@%m$(my_git_prompt) ${ret_status} %{$fg[white]%}%# %{$fg[yellow]%}%~%{$reset_color%}\n'
+
+local ret_status2="%(?..%{$fg[red]%}[%?] )"
+PROMPT=$'%{$fg[white]%}%* %{$fg[green]%}%n@%m$(my_git_prompt) %{$fg[white]%}%# %{$fg[yellow]%}%~\n${ret_status2}%{$reset_color%}'
 
 ZSH_THEME_PROMPT_RETURNCODE_PREFIX="%{$fg[red]%}"
 ZSH_THEME_GIT_PROMPT_PREFIX=" $fg[white](%{$fg[yellow]%}"

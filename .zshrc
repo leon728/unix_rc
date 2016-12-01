@@ -154,6 +154,9 @@ alias tig='tig --all'
 
 alias tmd='tmux detach -P ; tmux a -d || tmux new'
 alias scrd='screen -RD'
+#alias df='df -BM'
+#alias vmstat='vmstat -SM 2'
+#alias free='free -m'
 
 #source /usr/share/autojump/autojump.sh
 #[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && source ~/.autojump/etc/profile.d/autojump.sh
