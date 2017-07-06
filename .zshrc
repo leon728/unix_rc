@@ -135,7 +135,6 @@ export LANGUAGE="en_US:en"
 export EDITOR=vim
 export PAGER=less
 export LESS=-iR
-#export DISPLAY=172.23.44.5:0.0
 
 export HISTCONTROL=ignoredups
 export HISTSIZE=500
@@ -171,7 +170,7 @@ mymake() {
   ccGcc=$(echo -e "\033[35m")
   ccReset=$(echo -e "\033[0m")
   /usr/bin/make "$@" 2>&1 | \
-  sed -E -e "s/.* (error:|Error|cannot find|undefined reference) .*/$ccError&$ccReset/g" \
+  sed -r -e "s/.* (error:|Error|cannot find|undefined reference) .*/$ccError&$ccReset/g" \
          -e "s/.* warning: .*/$ccWarn&$ccReset/g" \
 		 -e "s/.*gcc .*/$ccGcc&$ccReset/g"
   return ${PIPESTATUS[0]}
@@ -184,6 +183,8 @@ mymake() {
 alias iesrc=". ~/workspace/ies.leon/ies.rc"
 alias glcrc=". ~/workspace/glc.leon/glc.rc"
 
+#export DISPLAY=172.23.44.5:0.0
+export DISPLAY=$(echo $SSH_CLIENT | awk '{print $1}'):0.0
 
 ## for NPM
 ## install -g to user home
@@ -203,3 +204,5 @@ export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 # Tell Node about these packages
 export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

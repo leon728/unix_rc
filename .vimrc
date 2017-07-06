@@ -28,6 +28,7 @@ set autoindent
 
 " set mouse control
 set mouse=
+"set mouse=a
 " n Normal mode  
 " v Visual mode  
 " i Insert mode  

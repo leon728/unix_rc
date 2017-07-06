@@ -63,7 +63,7 @@ mymake() {
   ccGcc=$(echo -e "\033[35m")
   ccReset=$(echo -e "\033[0m")
   /usr/bin/make "$@" 2>&1 | \
-  sed -E -e "s/.* (error:|Error|cannot find|undefined reference) .*/$ccError&$ccReset/g" \
+  sed -r -e "s/.* (error:|Error|cannot find|undefined reference) .*/$ccError&$ccReset/g" \
          -e "s/.* warning: .*/$ccWarn&$ccReset/g" \
 		 -e "s/.*gcc .*/$ccGcc&$ccReset/g"
   return ${PIPESTATUS[0]}
@@ -76,3 +76,5 @@ mymake() {
 alias iesrc=". ~/workspace/ies.leon/ies.rc"
 alias glcrc=". ~/workspace/glc.leon/glc.rc"
 
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
