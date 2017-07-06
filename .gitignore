@@ -1,3 +1,8 @@
+/.vscode/
+/.pki/
+/.oracle_jre_usage/
+/clion-2016.2.3/
+/.CLion2016.2/
 /.oh-my-zsh/
 /.pip/
 /.rnd
@@ -18,7 +23,6 @@
 /.bash_history
 /.bash_logout
 /.cache/
-/.clion11/
 /.config/
 /.dbus/
 /.dmrc
@@ -44,7 +48,6 @@
 /.xsession-errors
 /ClionProjects/
 /auth.sh
-/clion/
 /smartgit/
 
 /.snmp/mibs/
