@@ -1,3 +1,4 @@
-nohup ~/clion-2016.2.3/licenseServer >/dev/null 2>&1 &
-nohup ~/clion-2016.2.3/bin/clion.sh >/dev/null 2>&1 &
+export JDK_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+nohup ~/clion-2017.2.3/licenseServer >/dev/null 2>&1 &
+nohup ~/clion-2017.2.3/bin/clion.sh >/dev/null 2>&1 &
 

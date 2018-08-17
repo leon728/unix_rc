@@ -10,8 +10,9 @@
 	st = status
 	ci = commit
 	br = branch
-	lg  = log --graph --branches --format='%C(auto)%h%d %<(50,trunc)%s'
+	lg = log --graph --branches --format='%C(auto)%h %ci %d %<(50,trunc)%s'
 	lg2 = log --oneline --graph --branches --decorate
+	lg3 = log --graph --branches --format='%C(auto)%h%d %<(50,trunc)%s'
 [push]
 	default = simple
 [color]
