@@ -56,6 +56,8 @@ inoremap <Esc>Ol +
 inoremap <Esc>OS -
 inoremap <Esc>OM <Enter>
 
+map <F3> <ESC>:exec &mouse!="" ? "set mouse=" : "set mouse=a"<CR>
+
 " Open and close all the three plugins on the same time 
 nmap <F8>   :TrinityToggleAll<CR> 
 
@@ -67,4 +69,16 @@ nmap <F10>  :TrinityToggleTagList<CR>
 
 " Open and close the NERD_tree.vim separately 
 nmap <F11>  :TrinityToggleNERDTree<CR>
+
+
+" " Specify a directory for plugins
+" " - For Neovim: ~/.local/share/nvim/plugged
+" " - Avoid using standard Vim directory names like 'plugin'
+" call plug#begin('~/.vim/plugged')
+" 
+" Plug '~/.fzf'
+" Plug '~/fzf.vim'
+" 
+" " Initialize plugin system
+" call plug#end()
 

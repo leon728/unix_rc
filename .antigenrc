@@ -1,0 +1,36 @@
+antigen use oh-my-zsh
+
+#antigen bundle git
+antigen bundle gitfast
+#antigen bundle autojump
+antigen bundle colored-man-pages
+#antigen bundle colorize
+#antigen bundle copydir
+antigen bundle command-not-found
+antigen bundle history
+#antigen bundle sublime
+antigen bundle docker
+antigen bundle sudo
+#antigen bundle dircycle
+#antigen bundle dirhistory
+
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-completions
+#antigen bundle zsh-users/zsh-history-substring-search ./zsh-history-substring-search.zsh
+antigen bundle changyuheng/zsh-interactive-cd
+
+#export ZLE_RPROMPT_INDENT=0
+#source ~/.p10k.zsh
+source ~/.p10k.c2
+#source ~/.p10k.r2
+antigen theme romkatv/powerlevel10k
+
+#antigen theme leon
+#antigen theme robbyrussell/oh-my-zsh themes/leon
+
+#antigen theme https://github.com/leon728/unix_rc leon
+#antigen theme leon728/unix_rc leon
+#antigen theme leon728/unix_rc
+
+antigen apply

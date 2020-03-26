@@ -1,90 +1,27 @@
-# Path to your oh-my-zsh installation.
-  export ZSH=~/.oh-my-zsh
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export TERM=xterm-256color
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-#ZSH_THEME="robbyrussell"
-ZSH_THEME="leon"
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+# https://github.com/zsh-users/zsh-syntax-highlighting/issues/240
+# https://gist.github.com/magicdude4eva/2d4748f8ef3e6bf7b1591964c201c1ab
+### Fix slowness of pastes with zsh-syntax-highlighting.zsh
+pasteinit() {
+  OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
+  zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
+}
 
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+pastefinish() {
+  zle -N self-insert $OLD_SELF_INSERT
+}
+zstyle :bracketed-paste-magic paste-init pasteinit
+zstyle :bracketed-paste-magic paste-finish pastefinish
+### Fix slowness of pastes
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
 
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
- DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git autojump colored-man-pages colorize copydir command-not-found history sublime zsh-syntax-highlighting)
-#plugins+=(zsh-completions)
-#autoload -U compinit && compinit
-
-# User configuration
-
-  export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-# export MANPATH="/usr/local/man:$MANPATH"
-
-source $ZSH/oh-my-zsh.sh
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+#source .ohmyzshrc
+#ANTIGEN_LOG=$HOME/antigen.log
+source ~/antigen.zsh
+antigen init $HOME/.antigenrc
 
 #### set key binding ####
 autoload zkbd
@@ -144,8 +81,8 @@ setopt shwordsplit
 ## from .bashrc
 #############################################################
 
+#export LC_ALL="en_US.UTF-8"
 export LANG="en_US.UTF-8"
-export LC_ALL="en_US.UTF-8"
 export LANGUAGE="en_US:en"
 
 #source ~/.git-completion.bash
@@ -156,8 +93,8 @@ export PAGER=less
 export LESS=-iR
 
 export HISTCONTROL=ignoredups
-export HISTSIZE=500
-export HISTFILESIZE=5000
+export HISTSIZE=1000
+export HISTFILESIZE=10000
 
 alias ls='ls --color=auto'
 alias grep='grep --colour=auto'
@@ -201,6 +138,7 @@ mymake() {
 
 alias iesrc=". ~/workspace/ies.leon/ies.rc"
 alias glcrc=". ~/workspace/glc.leon/glc.rc"
+alias ponrc="cd ~/workspace/xgpon/sdk/OCTEONTX-SDK && source t81.leon && cd -"
 
 #export DISPLAY=172.23.44.5:0.0
 export DISPLAY=$(echo $SSH_CLIENT | awk '{print $1}'):0.0
@@ -210,18 +148,30 @@ export DISPLAY=$(echo $SSH_CLIENT | awk '{print $1}'):0.0
 ## http://stackoverflow.com/questions/10081293/install-npm-into-home-directory-with-distribution-nodejs-package-ubuntu
 
 # NPM packages in homedir
-export NPM_PACKAGES="$HOME/.npm-packages"
+#export NPM_PACKAGES="$HOME/.npm-packages"
 #mkdir -p "$NPM_PACKAGES"
 #echo "prefix = $NPM_PACKAGES" > ~/.npmrc
 
 # Tell our environment about user-installed node tools
 export PATH="$NPM_PACKAGES/bin:$PATH"
 # Unset manpath so we can inherit from /etc/manpath via the `manpath` command
-unset MANPATH  # delete if you already modified MANPATH elsewhere in your configuration
-export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
+#unset MANPATH  # delete if you already modified MANPATH elsewhere in your configuration
+#export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 
 # Tell Node about these packages
-export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
+#export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 
+#export GOROOT=/usr/lib/go-1.10
+export GOROOT=$HOME/workspace/openolt/go
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
-#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+#export APT_CONFIG=~/apt_proxy.conf
+# without this, yor can still use: sudo apt-get -c ~/apt_proxy.conf update
+
+#export http_proxy="http://172.23.85.77:8081"
+#export https_proxy="http://172.23.85.77:8081"
+
+#export FZF_DEFAULT_COMMAND="fd -I"
+export FZF_DEFAULT_OPTS="-e"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
