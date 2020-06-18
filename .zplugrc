@@ -1,0 +1,40 @@
+
+
+zplug plugins/gitfast, from:oh-my-zsh
+zplug plugins/colored-man-pages, from:oh-my-zsh
+zplug plugins/command-not-found, from:oh-my-zsh
+zplug plugins/docker, from:oh-my-zsh
+#zplug plugins/sudo, from:oh-my-zsh
+#zplug plugins/git, from:oh-my-zsh
+#zplug plugins/autojump, from:oh-my-zsh
+#zplug plugins/colorize, from:oh-my-zsh
+#zplug plugins/copydir, from:oh-my-zsh
+#zplug plugins/history, from:oh-my-zsh
+#zplug plugins/dirhistory, from:oh-my-zsh
+#zplug plugins/sublime, from:oh-my-zsh
+#zplug plugins/dircycle, from:oh-my-zsh
+
+zplug zsh-users/zsh-syntax-highlighting
+zplug zsh-users/zsh-autosuggestions
+zplug zsh-users/zsh-completions
+#zplug zsh-users/zsh-history-substring-search ./zsh-history-substring-search.zsh
+zplug changyuheng/zsh-interactive-cd
+zplug andrewferrier/fzf-z
+
+#zplug themes/robbyrussell, from:oh-my-zsh, as:theme
+
+#export ZLE_RPROMPT_INDENT=0
+zplug romkatv/powerlevel10k, as:theme, depth:1
+#source ~/.p10k.zsh
+#source ~/.p10k.c2
+source ~/.p10k.r2
+
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+#zplug load --verbose
+zplug load

@@ -18,10 +18,21 @@ zstyle :bracketed-paste-magic paste-finish pastefinish
 ### Fix slowness of pastes
 
 
+#---- oh-my-zsh
 #source .ohmyzshrc
 #ANTIGEN_LOG=$HOME/antigen.log
+
+#---- plugin manager: antigen
 source ~/antigen.zsh
 antigen init $HOME/.antigenrc
+
+#---- plugin manager: zplug    NOTE: not working, history is broken
+#if [[ ! -d ~/.zplug ]];then
+#  # git clone --depth 1 https://github.com/zplug/zplug ~/.zplug
+#  curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+#fi
+#source ~/.zplug/init.zsh
+#source ~/.zplugrc
 
 #### set key binding ####
 autoload zkbd
@@ -85,9 +96,6 @@ setopt shwordsplit
 export LANG="en_US.UTF-8"
 export LANGUAGE="en_US:en"
 
-#source ~/.git-completion.bash
-#source ~/.git-prompt.sh       # enable this if used in cygwin
-
 export EDITOR=vim
 export PAGER=less
 export LESS=-iR
@@ -100,12 +108,14 @@ alias ls='ls --color=auto'
 alias grep='grep --colour=auto'
 
 alias ll='ls -Al'
-alias lg='ls -l --group-directories-first'
+alias lg='ls -Al --group-directories-first'
 alias la='ls -l'
 alias g='grep -i'
 alias ns='netstat'
 alias t='telnet'
 alias tig='tig --all'
+alias ww='echo "$(whoami)@$(hostname)"'
+alias fd='fd -I'
 
 alias tmd='tmux detach -P ; tmux a -d || tmux new'
 alias scrd='screen -RD'
@@ -118,7 +128,7 @@ alias scrd='screen -RD'
 
 ## >> highlight warning and error when make
 #if [ ]; then
-mymake() {
+function mymake() {
   #ccError=$(echo -e "\033[41m")
   #ccWarn=$(echo -e "\033[33m")
   ccError=$(echo -e "\033[31;07m")
@@ -133,8 +143,13 @@ mymake() {
 }
 #fi
 
+function mysvnclean() {
+	find -name .svn | xargs -r -I{} svn revert -R {}/..
+	find -name .svn | xargs -r -I{} svn cleanup --remove-unversioned --remove-ignored {}/..
+}
+
 #alias make=colormake
-#PATH=~/bin:$PATH
+PATH=~/bin:$PATH
 
 alias iesrc=". ~/workspace/ies.leon/ies.rc"
 alias glcrc=". ~/workspace/glc.leon/glc.rc"
@@ -143,35 +158,54 @@ alias ponrc="cd ~/workspace/xgpon/sdk/OCTEONTX-SDK && source t81.leon && cd -"
 #export DISPLAY=172.23.44.5:0.0
 export DISPLAY=$(echo $SSH_CLIENT | awk '{print $1}'):0.0
 
-## for NPM
-## install -g to user home
-## http://stackoverflow.com/questions/10081293/install-npm-into-home-directory-with-distribution-nodejs-package-ubuntu
+# ## for NPM
+# ## install -g to user home
+# ## http://stackoverflow.com/questions/10081293/install-npm-into-home-directory-with-distribution-nodejs-package-ubuntu
+# 
+# # NPM packages in homedir
+# export NPM_PACKAGES="$HOME/.npm-packages"
+# #mkdir -p "$NPM_PACKAGES"
+# #echo "prefix = $NPM_PACKAGES" > ~/.npmrc
+# 
+# # Tell our environment about user-installed node tools
+# export PATH="$NPM_PACKAGES/bin:$PATH"
+# # Unset manpath so we can inherit from /etc/manpath via the `manpath` command
+# unset MANPATH  # delete if you already modified MANPATH elsewhere in your configuration
+# export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 
-# NPM packages in homedir
-#export NPM_PACKAGES="$HOME/.npm-packages"
-#mkdir -p "$NPM_PACKAGES"
-#echo "prefix = $NPM_PACKAGES" > ~/.npmrc
+# # Tell Node about these packages
+# export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 
-# Tell our environment about user-installed node tools
-export PATH="$NPM_PACKAGES/bin:$PATH"
-# Unset manpath so we can inherit from /etc/manpath via the `manpath` command
-#unset MANPATH  # delete if you already modified MANPATH elsewhere in your configuration
-#export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
+# #export GOROOT=/usr/lib/go-1.10
+# export GOROOT=$HOME/workspace/openolt/go
+# export GOPATH=$HOME/go
+# export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
-# Tell Node about these packages
-#export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
-
-#export GOROOT=/usr/lib/go-1.10
-export GOROOT=$HOME/workspace/openolt/go
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
-
-#export APT_CONFIG=~/apt_proxy.conf
-# without this, yor can still use: sudo apt-get -c ~/apt_proxy.conf update
+# # without this, yor can still use: sudo apt-get -c ~/apt_proxy.conf update
+# export APT_CONFIG=~/apt_proxy.conf
 
 #export http_proxy="http://172.23.85.77:8081"
 #export https_proxy="http://172.23.85.77:8081"
 
-#export FZF_DEFAULT_COMMAND="fd -I"
-export FZF_DEFAULT_OPTS="-e"
+export FZF_CTRL_T_COMMAND="fd -I"
+export FZF_DEFAULT_COMMAND="fd -I"
+export FZF_DEFAULT_OPTS="-e --height ${FZF_TMUX_HEIGHT:-40%}"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# fasd
+eval "$(fasd --init auto)"
+alias v='f -e vim'
+
+# https://github.com/andrewferrier/fzf-z
+export FZFZ_RECENT_DIRS_TOOL=fasd
+#export FZFZ_SUBDIR_LIMIT=0
+export FZFZ_UNIQUIFIER=cat
+export FZFZ_PREVIEW_COMMAND='ls --color --group-directories-first {}'
+#export FZFZ_PREVIEW_COMMAND='echo'
+
+# https://github.com/zsh-users/zsh-syntax-highlighting
+ZSH_HIGHLIGHT_MAXLENGTH=200
+
+# https://github.com/zsh-users/zsh-autosuggestions
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=100
+bindkey "^J" autosuggest-execute

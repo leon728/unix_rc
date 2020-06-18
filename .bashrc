@@ -1,80 +1,127 @@
-export LANG="en_US.UTF-8"
-export LC_ALL="en_US.UTF-8"
-export LANGUAGE="en_US:en"
+# ~/.bashrc: executed by bash(1) for non-login shells.
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+# for examples
 
-#source ~/.git-completion.bash
-#source ~/.git-prompt.sh       # enable this if used in cygwin
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
 
-export EDITOR=vim
-export PAGER=less
-export LESS=-iR
-#export PAGER=most
-#export DISPLAY=172.23.44.5:0.0
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+HISTCONTROL=ignoreboth
 
-export HISTCONTROL=ignoredups
-export HISTSIZE=500
-export HISTFILESIZE=5000
+# append to the history file, don't overwrite it
+shopt -s histappend
 
-alias ls='ls --color=auto'
-alias grep='grep --colour=auto'
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=1000
+HISTFILESIZE=2000
 
-alias ll='ls -Al'
-alias lg='ls -l --group-directories-first'
-alias la='ls -l'
-alias g='grep -i'
-alias ns='netstat'
-alias t='telnet'
-alias tig='tig --all'
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
 
-# Use colors for less, man, etc.
-[[ -f ~/.less_termcap ]] && . ~/.less_termcap
+# If set, the pattern "**" used in a pathname expansion context will
+# match all files and zero or more directories and subdirectories.
+#shopt -s globstar
 
-#source /usr/share/autojump/autojump.sh
-[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && source ~/.autojump/etc/profile.d/autojump.sh
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# cd commands, e.g. .., ..., ..2, ..3, .3, .4, d, ~, -, 1, 2, 3
-[[ -f ~/.cdcmds.sh ]] && . ~/.cdcmds.sh
+# set variable identifying the chroot you work in (used in the prompt below)
+if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
+    debian_chroot=$(cat /etc/debian_chroot)
+fi
 
-#export PS1='\[\e[1;33m\]\u\[\e[1;34m\]@\[\e[1;35m\]\H\[\e[0m\] \[\e[1;31m\]!\!\[\e[0m\] \[\e[1;32m\]\t\[\e[0m\] \[\e[1;37m\]\w\[\e[0m\]\n\[\e[1;37m\]\$\[\e[0m\] '
-#export PS1='\[\e[0;90m\]\t \[\e[0;36m\]\u@\h \[\e[0;33m\]\w \[\e[0;37m\]\$\[\e[0m\] '
-#export PS1='\[\e[0;37m\]\t \[\e[0;33m\]\w\n\[\e[0;97m\]\$\[\e[0m\] '
+# set a fancy prompt (non-color, unless we know we "want" color)
+case "$TERM" in
+    xterm|xterm-color|*-256color) color_prompt=yes;;
+esac
 
-source ~/.colorrc
-#PROMPT_COMMAND="PS1='${IBlack}\t ${Cyan}\u@\h ${Yellow}\w ${White}\$${Color_Off} '; "
-PROMPT_COMMAND="PS1='${White}\t ${Yellow}\w\n${IWhite}\$${Color_Off} '; "
+# uncomment for a colored prompt, if the terminal has the capability; turned
+# off by default to not distract the user: the focus in a terminal window
+# should be on the output of commands, not on the prompt
+#force_color_prompt=yes
 
-## >> git prompt
-export GIT_PS1_SHOWCOLORHINTS=1
-export GIT_PS1_SHOWDIRTYSTATE=1     # disable this if used in cygwin (bad performance)
-export GIT_PS1_SHOWSTASHSTATE=1     # disable this if used in cygwin (bad performance)
-export GIT_PS1_SHOWUNTRACKEDFILES=1 # disable this if used in cygwin (bad performance)
-#export GIT_PS1_DESCRIBE_STYLE="branch"
-#export GIT_PS1_SHOWUPSTREAM="auto git"
-#PROMPT_COMMAND='__git_ps1 "${IBlack}\t ${Cyan}\u@\h${Color_Off}" " ${Yellow}\w ${White}\$${Color_Off} "'
-PROMPT_COMMAND='__git_ps1 "${White}\t${Color_Off}" " ${Yellow}\w\n${IWhite}\$${Color_Off} "'
+if [ -n "$force_color_prompt" ]; then
+    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+	# We have color support; assume it's compliant with Ecma-48
+	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+	# a case would tend to support setf rather than setaf.)
+	color_prompt=yes
+    else
+	color_prompt=
+    fi
+fi
 
-## >> highlight warning and error when make
-#if [ ]; then
-mymake() {
-  #ccError=$(echo -e "\033[41m")
-  #ccWarn=$(echo -e "\033[33m")
-  ccError=$(echo -e "\033[31;07m")
-  ccWarn=$(echo -e "\033[33;07m")
-  ccGcc=$(echo -e "\033[35m")
-  ccReset=$(echo -e "\033[0m")
-  /usr/bin/make "$@" 2>&1 | \
-  sed -r -e "s/.* (error:|Error|cannot find|undefined reference) .*/$ccError&$ccReset/g" \
-         -e "s/.* warning: .*/$ccWarn&$ccReset/g" \
-		 -e "s/.*gcc .*/$ccGcc&$ccReset/g"
-  return ${PIPESTATUS[0]}
-}
-#fi
+if [ "$color_prompt" = yes ]; then
+    if [[ ${EUID} == 0 ]] ; then
+        PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\h\[\033[01;34m\] \W \$\[\033[00m\] '
+    else
+        PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\w \$\[\033[00m\] '
+    fi
+else
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h \w \$ '
+fi
+unset color_prompt force_color_prompt
 
-#alias make=colormake
-#PATH=~/bin:$PATH
+# If this is an xterm set the title to user@host:dir
+case "$TERM" in
+xterm*|rxvt*)
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h \w\a\]$PS1"
+    ;;
+*)
+    ;;
+esac
 
-alias iesrc=". ~/workspace/ies.leon/ies.rc"
-alias glcrc=". ~/workspace/glc.leon/glc.rc"
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
 
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+# colored GCC warnings and errors
+#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+
+if [ -x /usr/bin/mint-fortune ]; then
+     /usr/bin/mint-fortune
+fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

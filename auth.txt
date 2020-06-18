@@ -1,0 +1,4 @@
+#! /bin/sh
+
+wget --post-data="mac=&debug=&username=ZT01234&password=12345678&commit=Log in" http://172.23.19.121/authentication.php -O /dev/null
+
