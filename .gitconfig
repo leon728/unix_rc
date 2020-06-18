@@ -17,4 +17,7 @@
 	default = simple
 [color]
 	ui = true
-
+[diff]
+	tool = meld
+[difftool]
+	prompt = false
