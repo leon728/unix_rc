@@ -117,6 +117,12 @@ alias tig='tig --all'
 alias ww='echo "$(whoami)@$(hostname)"'
 alias fd='fd -I'
 
+export PS_FORMAT='user,pid,ppid,pcpu,pmem,vsz,rss,tty,stat,stime,bsdtime,args'
+alias pss='ps -eo user,pid,ppid,pcpu,pmem,vsz,rss,tty,stat,stime,bsdtime,comm'              # only command
+alias psl='ps -eo user,pid,ppid,pcpu,pmem,vsz,rss,tty,stat,stime,bsdtime,args'              # command and arguments ('args' output is limited to terminal width)
+alias psll='ps -eo user,pid,ppid,pcpu,pmem,vsz,rss,tty,stat,stime,bsdtime,args -ww'         # 'args' output is unlimited
+alias psl3='ps -eo user,pid,ppid,pcpu,pmem,vsz,rss,tty,stat,stime,bsdtime,args --width 30'  # 'args' output is limited to 30 characters
+
 alias tmd='tmux detach -P ; tmux a -d || tmux new'
 alias scrd='screen -RD'
 #alias df='df -BM'
