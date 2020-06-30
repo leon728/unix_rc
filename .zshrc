@@ -195,7 +195,8 @@ export DISPLAY=$(echo $SSH_CLIENT | awk '{print $1}'):0.0
 
 export FZF_CTRL_T_COMMAND="fd -I"
 export FZF_DEFAULT_COMMAND="fd -I"
-export FZF_DEFAULT_OPTS="-e --height ${FZF_TMUX_HEIGHT:-40%}"
+#export FZF_DEFAULT_OPTS="-e --height ${FZF_TMUX_HEIGHT:-40%} --color=16 --reverse -m +s"
+export FZF_DEFAULT_OPTS="-e --height ${FZF_TMUX_HEIGHT:-40%} --color=16 --reverse -m"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # fasd
