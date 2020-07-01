@@ -20,6 +20,7 @@ antigen bundle zsh-users/zsh-completions
 #antigen bundle zsh-users/zsh-history-substring-search ./zsh-history-substring-search.zsh
 antigen bundle changyuheng/zsh-interactive-cd
 
+antigen bundle junegunn/fzf
 #antigen bundle changyuheng/fz
 #antigen bundle andrewferrier/fzf-z
 antigen bundle leon728/fasd
