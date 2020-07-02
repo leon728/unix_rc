@@ -195,8 +195,8 @@ export DISPLAY=$(echo $SSH_CLIENT | awk '{print $1}'):0.0
 
 export FZF_CTRL_T_COMMAND="fd -I"
 export FZF_DEFAULT_COMMAND="fd -I"
-#export FZF_DEFAULT_OPTS="-e --height ${FZF_TMUX_HEIGHT:-40%} --color=16 --reverse -m +s"
-export FZF_DEFAULT_OPTS="-e --height ${FZF_TMUX_HEIGHT:-40%} --color=16 --reverse -m"
+#export FZF_DEFAULT_OPTS="-e --height ${FZF_TMUX_HEIGHT:-40%} --color=16 -m --reverse +s"
+export FZF_DEFAULT_OPTS="-e --height ${FZF_TMUX_HEIGHT:-40%} --color=16 -m --reverse"
 [ -f ~/.fzf.zsh ] || ~/.antigen/bundles/junegunn/fzf/install --all
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -217,3 +217,5 @@ ZSH_HIGHLIGHT_MAXLENGTH=200
 # https://github.com/zsh-users/zsh-autosuggestions
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=100
 bindkey "^J" autosuggest-execute
+
+export RIPGREP_CONFIG_PATH=~/.ripgreprc
