@@ -38,6 +38,10 @@ set mouse=
 " r for |hit-enter| prompt  
 " A auto-select in Visual mode
 
+"set t_Co=256
+"set t_Co=16
+"set t_Co=8
+
 " set numpad/numberpad to input numbers
 inoremap <Esc>Oq 1
 inoremap <Esc>Or 2
