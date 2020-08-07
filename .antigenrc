@@ -30,8 +30,7 @@ antigen bundle leon728/fzf-z
 antigen theme romkatv/powerlevel10k
 #export ZLE_RPROMPT_INDENT=0
 #source ~/.p10k.zsh
-source ~/.p10k.c2
-#source ~/.p10k.r2
+source ~/.p10k.r3
 
 #antigen theme leon
 #antigen theme robbyrussell/oh-my-zsh themes/leon
