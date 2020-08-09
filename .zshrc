@@ -154,6 +154,12 @@ function mysvnclean() {
 	find -name .svn | xargs -r -I{} svn cleanup --remove-unversioned --remove-ignored {}/..
 }
 
+## https://github.com/romkatv/powerlevel10k#how-do-i-change-prompt-colors
+## see also: apt install colortest
+function mycolor256() {
+    for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done
+}
+
 #alias make=colormake
 PATH=~/bin:$PATH
 
