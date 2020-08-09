@@ -197,7 +197,7 @@ export FZF_CTRL_T_COMMAND="fd -I"
 export FZF_DEFAULT_COMMAND="fd -I"
 #export FZF_DEFAULT_OPTS="-e --height ${FZF_TMUX_HEIGHT:-40%} --color=16 -m --reverse +s"
 export FZF_DEFAULT_OPTS="-e --height ${FZF_TMUX_HEIGHT:-40%} --color=16 -m --reverse"
-[ -f ~/.fzf.zsh ] || ~/.antigen/bundles/junegunn/fzf/install --all
+[ -f ~/.fzf.zsh -a -f ~/.antigen/bundles/junegunn/fzf/bin/fzf ] || ~/.antigen/bundles/junegunn/fzf/install --all
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # fasd
