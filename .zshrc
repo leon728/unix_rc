@@ -26,6 +26,9 @@ zstyle :bracketed-paste-magic paste-finish pastefinish
 source ~/antigen.zsh
 antigen init $HOME/.antigenrc
 
+#---- plugin manager: zgen
+#source ~/.zgenrc
+
 #---- plugin manager: zplug    NOTE: not working, history is broken
 #if [[ ! -d ~/.zplug ]];then
 #  # git clone --depth 1 https://github.com/zplug/zplug ~/.zplug

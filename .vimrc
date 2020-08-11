@@ -1,8 +1,9 @@
 syntax on
 set nocompatible
-"colorscheme elflord
-"colorscheme torte
-colorscheme pablo
+colorscheme desert
+"colorscheme koehler
+"colorscheme pablo
+"colorscheme slate
 
 "set backspace=indent,eol,start
 set bs=2
