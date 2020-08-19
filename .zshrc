@@ -159,8 +159,17 @@ function mymake() {
 #fi
 
 function mysvnclean() {
-	find -name .svn | xargs -r -I{} svn revert -R {}/..
-	find -name .svn | xargs -r -I{} svn cleanup --remove-unversioned --remove-ignored {}/..
+#  dirlist=$(find . -name .svn | sed 's#/.svn##g')
+#  [[ -d .svn ]] || dirlist+=" ."
+  
+  dirlist=$@; [[ $# -eq 0 ]] && dirlist=.;    # default to . if no arguments
+  dirlist="$dirlist $(printf '%s\n' $dirlist | xargs -r -I{} find {} -name .svn | sed 's#/.svn##g')"    # dirlist: input dirs and subdirs of them which contains .svn/
+  dirlist=$(printf '%s\n' $dirlist | sort | uniq)    # remove duplicate
+  
+  for i in $dirlist; do
+    svn revert -R $i
+    svn cleanup --remove-unversioned --remove-ignored $i
+  done
 }
 
 ## https://github.com/romkatv/powerlevel10k#how-do-i-change-prompt-colors
@@ -221,7 +230,7 @@ alias v='f -e vim'
 
 # https://github.com/andrewferrier/fzf-z
 export FZFZ_RECENT_DIRS_TOOL=fasd
-#export FZFZ_SUBDIR_LIMIT=0
+export FZFZ_SUBDIR_LIMIT=0
 export FZFZ_UNIQUIFIER=cat
 export FZFZ_PREVIEW_COMMAND='ls --color --group-directories-first {}'
 #export FZFZ_PREVIEW_COMMAND='echo'
