@@ -137,6 +137,7 @@ alias scrd='screen -RD'
 #alias df='df -BM'
 #alias vmstat='vmstat -SM 2'
 #alias free='free -m'
+alias lynx='lynx -accept_all_cookies -nopause'
 
 #source /usr/share/autojump/autojump.sh
 #[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && source ~/.autojump/etc/profile.d/autojump.sh
