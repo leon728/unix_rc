@@ -108,6 +108,7 @@ export LANGUAGE="en_US:en"
 export EDITOR=vim
 export PAGER=less
 export LESS=-iR
+export BLOCK_SIZE="'1"  # http://www.gnu.org/software/coreutils/manual/html_node/Block-size.html
 
 export HISTCONTROL=ignoredups
 export HISTSIZE=1000
