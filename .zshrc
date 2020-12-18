@@ -139,6 +139,7 @@ alias scrd='screen -RD'
 #alias vmstat='vmstat -SM 2'
 #alias free='free -m'
 alias lynx='lynx -accept_all_cookies -nopause'
+#alias vim='TERM=linux nvim'
 
 #source /usr/share/autojump/autojump.sh
 #[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && source ~/.autojump/etc/profile.d/autojump.sh
@@ -245,3 +246,4 @@ ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=100
 bindkey "^J" autosuggest-execute
 
 export RIPGREP_CONFIG_PATH=~/.ripgreprc
+zstyle ':fzf-tab:*' fzf-bindings 'ctrl-j:down' 'ctrl-k:up' 'tab:toggle'

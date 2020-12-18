@@ -28,10 +28,12 @@ antigen bundle leon728/fasd
 antigen bundle leon728/fz
 antigen bundle leon728/fzf-z
 
+#antigen bundle lincheney/fzf-tab-completion
+antigen bundle Aloxaf/fzf-tab
+
 antigen theme romkatv/powerlevel10k
 #export ZLE_RPROMPT_INDENT=0
-#source ~/.p10k.zsh
-source ~/.p10k.r3
+source ~/.p10k.r4
 
 #antigen theme leon
 #antigen theme robbyrussell/oh-my-zsh themes/leon
