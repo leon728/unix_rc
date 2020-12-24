@@ -246,4 +246,4 @@ ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=100
 bindkey "^J" autosuggest-execute
 
 export RIPGREP_CONFIG_PATH=~/.ripgreprc
-zstyle ':fzf-tab:*' fzf-bindings 'ctrl-j:down' 'ctrl-k:up' 'tab:toggle'
+#zstyle ':fzf-tab:*' fzf-bindings 'ctrl-j:down' 'ctrl-k:up' 'tab:toggle'
