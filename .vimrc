@@ -91,6 +91,11 @@ nmap <C-J> :bp<CR>
 nmap <C-K> :bn<CR>
 ":bd  buffer delete
 
+" https://vim.fandom.com/wiki/Improved_hex_editing
+nnoremap <C-H> :Hexmode<CR>
+inoremap <C-H> <Esc>:Hexmode<CR>
+vnoremap <C-H> :<C-U>Hexmode<CR>
+
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
@@ -117,6 +122,8 @@ Plug 'tpope/vim-fugitive'
 "Plug 'antoinemadec/coc-fzf'
 "Plug 'yggdroot/leaderf'
 "Plug 'kien/ctrlp.vim'
+
+Plug 'fidian/hexmode'
 
 " Initialize plugin system
 call plug#end()
