@@ -117,13 +117,13 @@ Plug 'vim-airline/vim-airline'
 
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-fugitive'
+Plug 'fidian/hexmode'
+Plug 'google/vim-searchindex'
 
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "Plug 'antoinemadec/coc-fzf'
 "Plug 'yggdroot/leaderf'
 "Plug 'kien/ctrlp.vim'
-
-Plug 'fidian/hexmode'
 
 " Initialize plugin system
 call plug#end()
