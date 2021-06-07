@@ -228,10 +228,20 @@ export FZF_DEFAULT_OPTS="-e --height ${FZF_TMUX_HEIGHT:-40%} --color=16 -m --rev
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # fasd
+# https://github.com/leon728/fasd (forked from https://github.com/clvv/fasd)
+# description: history of recect files and directories, commands to list/filter/select between them
 eval "$(fasd --init auto)"
-alias v='f -e vim'
+# alias v='f -e vim'  # example of using -e
+unalias d  # I prefer .antigen/bundles/robbyrussell/oh-my-zsh/lib/directories.zsh
 
-# https://github.com/andrewferrier/fzf-z
+# fz
+# https://github.com/leon728/fz (forked from https://github.com/changyuheng/fz)
+# description: feed fasd result into fzf, j for dir, k for file, jj/kk for dir/file under current directory
+# e.g. j <TAB>, jj <TAB>, j test<TAB>
+
+# fzf-z
+# https://github.com/leon728/fzf-z (forked from https://github.com/andrewferrier/fzf-z)
+# description: Ctrl-G, show fzf filter of recent directories, select and go
 export FZFZ_RECENT_DIRS_TOOL=fasd
 export FZFZ_SUBDIR_LIMIT=0
 export FZFZ_UNIQUIFIER=cat
