@@ -33,7 +33,7 @@ antigen bundle Aloxaf/fzf-tab
 
 antigen theme romkatv/powerlevel10k
 #export ZLE_RPROMPT_INDENT=0
-source ~/.p10k.r4
+source ~/.p10k.r3
 
 #antigen theme leon
 #antigen theme robbyrussell/oh-my-zsh themes/leon

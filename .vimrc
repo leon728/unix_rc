@@ -92,9 +92,9 @@ nmap <C-K> :bn<CR>
 ":bd  buffer delete
 
 " https://vim.fandom.com/wiki/Improved_hex_editing
-nnoremap <C-H> :Hexmode<CR>
-inoremap <C-H> <Esc>:Hexmode<CR>
-vnoremap <C-H> :<C-U>Hexmode<CR>
+"nnoremap <C-H> :Hexmode<CR>
+"inoremap <C-H> <Esc>:Hexmode<CR>
+"vnoremap <C-H> :<C-U>Hexmode<CR>
 
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
@@ -102,7 +102,7 @@ vnoremap <C-H> :<C-U>Hexmode<CR>
 call plug#begin('~/.vim/plugged')
 
 Plug 'preservim/nerdtree'
-Plug 'majutsushi/tagbar'
+"Plug 'majutsushi/tagbar'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
