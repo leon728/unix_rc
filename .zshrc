@@ -257,3 +257,6 @@ bindkey "^J" autosuggest-execute
 
 export RIPGREP_CONFIG_PATH=~/.ripgreprc
 #zstyle ':fzf-tab:*' fzf-bindings 'ctrl-j:down' 'ctrl-k:up' 'tab:toggle'
+
+#export GPG_TTY=$(tty)
+export GPG_TTY=$TTY
