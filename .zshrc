@@ -220,7 +220,14 @@ export DISPLAY=$(echo $SSH_CLIENT | awk '{print $1}'):0.0
 #export http_proxy="http://172.23.85.77:8081"
 #export https_proxy="http://172.23.85.77:8081"
 
-export FZF_CTRL_T_COMMAND="fd -I"
+# use -j1 so that the result will be more (but not fully) ordered
+export FZF_CTRL_T_COMMAND="fd -I -j1"
+#export FZF_CTRL_T_OPTS=""
+bindkey "^N" fzf-file-widget
+export FZF_ALT_C_COMMAND="fd -I -td -j1"
+#export FZF_ALT_C_OPTS=""
+bindkey "^O" fzf-cd-widget
+
 export FZF_DEFAULT_COMMAND="fd -I"
 #export FZF_DEFAULT_OPTS="-e --height ${FZF_TMUX_HEIGHT:-40%} --color=16 -m --reverse +s"
 export FZF_DEFAULT_OPTS="-e --height ${FZF_TMUX_HEIGHT:-40%} --color=16 -m --reverse"
