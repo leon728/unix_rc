@@ -228,6 +228,14 @@ export FZF_ALT_C_COMMAND="fd -I -td -j1"
 #export FZF_ALT_C_OPTS=""
 bindkey "^O" fzf-cd-widget
 
+_fzf_compgen_path() {
+	command fd -I -tf -tl -j1
+}
+
+_fzf_compgen_dir() {
+	command fd -I -td -j1
+}
+
 export FZF_DEFAULT_COMMAND="fd -I"
 #export FZF_DEFAULT_OPTS="-e --height ${FZF_TMUX_HEIGHT:-40%} --color=16 -m --reverse +s"
 export FZF_DEFAULT_OPTS="-e --height ${FZF_TMUX_HEIGHT:-40%} --color=16 -m --reverse"
