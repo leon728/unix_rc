@@ -114,6 +114,10 @@ export HISTCONTROL=ignoredups
 export HISTSIZE=1000
 export HISTFILESIZE=10000
 
+# https://wiki.archlinux.org/title/Sudo#Passing_aliases
+# https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html#Aliases
+# If the last character of the alias value is a blank, then the next command word following the alias is also checked for alias expansion.
+alias sudo='sudo '
 alias ls='ls --color=auto'
 alias grep='grep --colour=auto'
 
@@ -270,8 +274,19 @@ ZSH_HIGHLIGHT_MAXLENGTH=200
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=100
 bindkey "^J" autosuggest-execute
 
+# https://github.com/zdharma-continuum/fast-syntax-highlighting
+# use this command to set my customized theme (once, it will be config and saved)
+# > fast-theme ~/unix_rc/fsyh.ini
+
 export RIPGREP_CONFIG_PATH=~/.ripgreprc
 #zstyle ':fzf-tab:*' fzf-bindings 'ctrl-j:down' 'ctrl-k:up' 'tab:toggle'
 
 #export GPG_TTY=$(tty)
 export GPG_TTY=$TTY
+
+export PATH="$HOME/.poetry/bin:$PATH"
+
+export PYENV_ROOT=$HOME/.pyenv
+export PATH=$PYENV_ROOT/bin:$PATH
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
