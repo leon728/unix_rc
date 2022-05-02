@@ -30,7 +30,8 @@ antigen bundle leon728/fz
 antigen bundle leon728/fzf-z
 
 #antigen bundle lincheney/fzf-tab-completion
-antigen bundle Aloxaf/fzf-tab
+#antigen bundle Aloxaf/fzf-tab
+antigen bundle leon728/fzf-tab
 
 antigen theme romkatv/powerlevel10k
 #export ZLE_RPROMPT_INDENT=0
