@@ -292,3 +292,6 @@ if [ -e $PYENV_ROOT/bin ]; then
   eval "$(pyenv init --path)"
   eval "$(pyenv init -)"
 fi
+
+DISABLE_AUTO_TITLE="true"
+#ZSH_THEME_TERM_TITLE_IDLE="%~"
