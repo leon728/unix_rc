@@ -2,6 +2,7 @@
 	email = 
 	name = 
 [core]
+	fileMode = false
 	pager = cat
 	editor = vim
 	whitespace = -blank-at-eol,-space-before-tab,-blank-at-eof
@@ -10,7 +11,7 @@
 	st = status
 	ci = commit
 	br = branch
-	lg = log --graph --branches --format='%C(auto)%h %ci %d %<(50,trunc)%s'
+	lg = log --graph --branches --format='%C(auto)%h %as %<(12,trunc)%an %d %<(50,trunc)%s'
 	lg2 = log --oneline --graph --branches --decorate
 	lg3 = log --graph --branches --format='%C(auto)%h%d %<(50,trunc)%s'
 [push]
@@ -21,3 +22,5 @@
 	tool = meld
 [difftool]
 	prompt = false
+[credential]
+    helper = cache --timeout 28800
