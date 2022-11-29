@@ -2,6 +2,7 @@
 	email = 
 	name = 
 [core]
+	autoCrlf = false
 	fileMode = false
 	pager = cat
 	editor = vim
@@ -23,4 +24,4 @@
 [difftool]
 	prompt = false
 [credential]
-    helper = cache --timeout 28800
+    helper = cache --timeout 604800
