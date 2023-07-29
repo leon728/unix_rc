@@ -2,7 +2,7 @@
 	email = 
 	name = 
 [core]
-	autoCrlf = false
+	autoCrlf = input
 	fileMode = false
 	pager = cat
 	editor = vim
