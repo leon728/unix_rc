@@ -1,0 +1,29 @@
+# https://getantidote.github.io/
+# https://github.com/mattmc3/antidote
+#
+# - install: git clone --depth=1 https://github.com/mattmc3/antidote.git ~/.antidote
+# - put this file to ~/
+# - add these to ~/.zshrc
+#     source ~/.antidote/antidote.zsh
+#     antidote load
+#     source ~/.p10k.r3
+
+ohmyzsh/ohmyzsh path:oh-my-zsh.sh
+ohmyzsh/ohmyzsh path:plugins/gitfast
+ohmyzsh/ohmyzsh path:plugins/colored-man-pages
+ohmyzsh/ohmyzsh path:plugins/command-not-found
+ohmyzsh/ohmyzsh path:plugins/docker
+
+zsh-users/zsh-syntax-highlighting
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-completions
+hlissner/zsh-autopair
+
+junegunn/fzf kind:clone
+leon728/fasd kind:clone
+leon728/fz
+leon728/fzf-z
+
+leon728/fzf-tab
+
+romkatv/powerlevel10k path:powerlevel10k.zsh-theme

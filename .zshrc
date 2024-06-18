@@ -32,6 +32,11 @@ fi
 source ~/antigen.zsh
 antigen init $HOME/.antigenrc
 
+#---- plugin manager: antidote
+#source ~/.antidote/antidote.zsh
+#antidote load
+#source ~/.p10k.r3
+
 #---- plugin manager: zgen
 #source ~/.zgenrc
 
