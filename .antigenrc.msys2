@@ -1,0 +1,51 @@
+antigen use oh-my-zsh
+
+antigen bundles <<EOBUNDLES
+	z
+#	fasd
+	gitfast
+	colored-man-pages
+	command-not-found
+	docker
+#	sudo
+#	git
+#	autojump
+#	colorize
+#	copydir
+#	history
+#	dirhistory
+#	sublime
+#	dircycle
+
+	zdharma-continuum/fast-syntax-highlighting
+#	zsh-users/zsh-syntax-highlighting
+	zsh-users/zsh-autosuggestions
+#	zsh-users/zsh-completions
+#	zsh-users/zsh-history-substring-search ./zsh-history-substring-search.zsh
+#	changyuheng/zsh-interactive-cd
+#	hlissner/zsh-autopair
+
+	junegunn/fzf
+#	changyuheng/fz
+#	andrewferrier/fzf-z
+#	leon728/fasd
+	leon728/fz
+	leon728/fzf-z
+
+	lincheney/fzf-tab-completion zsh/fzf-zsh-completion.sh
+#	Aloxaf/fzf-tab
+#	leon728/fzf-tab
+EOBUNDLES
+
+antigen theme romkatv/powerlevel10k
+#export ZLE_RPROMPT_INDENT=0
+source ~/.p10k.r3
+
+#antigen theme leon
+#antigen theme robbyrussell/oh-my-zsh themes/leon
+
+#antigen theme https://github.com/leon728/unix_rc leon
+#antigen theme leon728/unix_rc leon
+#antigen theme leon728/unix_rc
+
+antigen apply
