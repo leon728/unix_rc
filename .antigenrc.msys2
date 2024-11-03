@@ -17,6 +17,10 @@ antigen bundles <<EOBUNDLES
 #	sublime
 #	dircycle
 
+#	lincheney/fzf-tab-completion zsh/fzf-zsh-completion.sh
+#	Aloxaf/fzf-tab
+	leon728/fzf-tab
+
 	zdharma-continuum/fast-syntax-highlighting
 #	zsh-users/zsh-syntax-highlighting
 	zsh-users/zsh-autosuggestions
@@ -31,10 +35,6 @@ antigen bundles <<EOBUNDLES
 #	leon728/fasd
 	leon728/fz
 	leon728/fzf-z
-
-#	lincheney/fzf-tab-completion zsh/fzf-zsh-completion.sh
-#	Aloxaf/fzf-tab
-	leon728/fzf-tab
 EOBUNDLES
 
 antigen theme romkatv/powerlevel10k
