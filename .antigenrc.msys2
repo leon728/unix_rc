@@ -32,9 +32,9 @@ antigen bundles <<EOBUNDLES
 	leon728/fz
 	leon728/fzf-z
 
-	lincheney/fzf-tab-completion zsh/fzf-zsh-completion.sh
+#	lincheney/fzf-tab-completion zsh/fzf-zsh-completion.sh
 #	Aloxaf/fzf-tab
-#	leon728/fzf-tab
+	leon728/fzf-tab
 EOBUNDLES
 
 antigen theme romkatv/powerlevel10k
