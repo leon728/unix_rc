@@ -23,6 +23,9 @@ set hlsearch
 set ruler		" show row,col
 set laststatus=2
 
+set list
+set listchars=tab:▸\ ,trail:●
+
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
