@@ -301,3 +301,8 @@ fi
 
 DISABLE_AUTO_TITLE="true"
 #ZSH_THEME_TERM_TITLE_IDLE="%~"
+
+# Skip interactive setup for VS Code Copilot shell commands
+if [[ "$TERM_PROGRAM" == "vscode" && ! -t 0 ]]; then
+  return
+fi
