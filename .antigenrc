@@ -1,3 +1,4 @@
+DISABLE_MAGIC_FUNCTIONS=true
 antigen use oh-my-zsh
 
 antigen bundles <<EOBUNDLES
